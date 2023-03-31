@@ -1,2 +1,14 @@
-vendor/ export-ignore
-.gitattributes export-ignore
+*  text=auto  eol=lf
+
+*.php  text  eol=lf  diff=php
+
+
+/tests/             export-ignore
+/vendor/            export-ignore
+/examples/          export-ignore
+/src/QcloudApi/     export-ignore
+
+/.gitattributes        export-ignore
+/CHANGELOG.md          export-ignore
+/products.md           export-ignore
+/SERVICE_CHANGELOG.md  export-ignore
