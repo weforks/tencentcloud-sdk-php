@@ -20,8 +20,8 @@ use TencentCloud\Common\AbstractModel;
 /**
  * DescribeDomainList请求参数结构体
  *
- * @method string getType() 获取域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
- * @method void setType(string $Type) 设置域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
+ * @method string getType() 获取域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT，FREE。
+ * @method void setType(string $Type) 设置域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT，FREE。
  * @method integer getOffset() 获取记录开始的偏移, 第一条记录为 0, 依次类推。默认值为0。
  * @method void setOffset(integer $Offset) 设置记录开始的偏移, 第一条记录为 0, 依次类推。默认值为0。
  * @method integer getLimit() 获取要获取的域名数量, 比如获取20个, 则为20。默认值为3000。
@@ -30,11 +30,13 @@ use TencentCloud\Common\AbstractModel;
  * @method void setGroupId(integer $GroupId) 设置分组ID, 获取指定分组的域名
  * @method string getKeyword() 获取根据关键字搜索域名
  * @method void setKeyword(string $Keyword) 设置根据关键字搜索域名
+ * @method array getTags() 获取标签过滤
+ * @method void setTags(array $Tags) 设置标签过滤
  */
 class DescribeDomainListRequest extends AbstractModel
 {
     /**
-     * @var string 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
+     * @var string 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT，FREE。
      */
     public $Type;
 
@@ -59,11 +61,17 @@ class DescribeDomainListRequest extends AbstractModel
     public $Keyword;
 
     /**
-     * @param string $Type 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
+     * @var array 标签过滤
+     */
+    public $Tags;
+
+    /**
+     * @param string $Type 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT，FREE。
      * @param integer $Offset 记录开始的偏移, 第一条记录为 0, 依次类推。默认值为0。
      * @param integer $Limit 要获取的域名数量, 比如获取20个, 则为20。默认值为3000。
      * @param integer $GroupId 分组ID, 获取指定分组的域名
      * @param string $Keyword 根据关键字搜索域名
+     * @param array $Tags 标签过滤
      */
     function __construct()
     {
@@ -96,6 +104,15 @@ class DescribeDomainListRequest extends AbstractModel
 
         if (array_key_exists("Keyword",$param) and $param["Keyword"] !== null) {
             $this->Keyword = $param["Keyword"];
+        }
+
+        if (array_key_exists("Tags",$param) and $param["Tags"] !== null) {
+            $this->Tags = [];
+            foreach ($param["Tags"] as $key => $value){
+                $obj = new TagItemFilter();
+                $obj->deserialize($value);
+                array_push($this->Tags, $obj);
+            }
         }
     }
 }

@@ -21,40 +21,24 @@ use TencentCloud\Common\AbstractModel;
  * 溯源数据
  *
  * @method string getTraceId() 获取溯源ID
-注意：此字段可能返回 null，表示取不到有效值。
  * @method void setTraceId(string $TraceId) 设置溯源ID
-注意：此字段可能返回 null，表示取不到有效值。
  * @method integer getCorpId() 获取企业ID
-注意：此字段可能返回 null，表示取不到有效值。
  * @method void setCorpId(integer $CorpId) 设置企业ID
-注意：此字段可能返回 null，表示取不到有效值。
  * @method integer getType() 获取码类型 0: 批次, 1: 码, 2: 生产任务
-注意：此字段可能返回 null，表示取不到有效值。
  * @method void setType(integer $Type) 设置码类型 0: 批次, 1: 码, 2: 生产任务
-注意：此字段可能返回 null，表示取不到有效值。
  * @method string getCode() 获取码值，跟码类型一一对应
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setCode(string $Code) 设置码值，跟码类型一一对应
 注意：此字段可能返回 null，表示取不到有效值。
  * @method integer getRank() 获取排序，在Phase相同情况下，值越小排名靠前
-注意：此字段可能返回 null，表示取不到有效值。
  * @method void setRank(integer $Rank) 设置排序，在Phase相同情况下，值越小排名靠前
-注意：此字段可能返回 null，表示取不到有效值。
  * @method integer getPhase() 获取溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
-注意：此字段可能返回 null，表示取不到有效值。
  * @method void setPhase(integer $Phase) 设置溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
-注意：此字段可能返回 null，表示取不到有效值。
  * @method string getPhaseName() 获取溯源环节名称
-注意：此字段可能返回 null，表示取不到有效值。
  * @method void setPhaseName(string $PhaseName) 设置溯源环节名称
-注意：此字段可能返回 null，表示取不到有效值。
  * @method string getTraceTime() 获取溯源时间
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setTraceTime(string $TraceTime) 设置溯源时间
-注意：此字段可能返回 null，表示取不到有效值。
- * @method array getTraceItems() 获取无
-注意：此字段可能返回 null，表示取不到有效值。
- * @method void setTraceItems(array $TraceItems) 设置无
 注意：此字段可能返回 null，表示取不到有效值。
  * @method string getCreateTime() 获取创建时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -77,27 +61,24 @@ use TencentCloud\Common\AbstractModel;
  * @method void setPhaseData(PhaseData $PhaseData) 设置溯源阶段配置
 注意：此字段可能返回 null，表示取不到有效值。
  * @method integer getStatus() 获取溯源阶段状态 0: 无效, 1: 有效
-注意：此字段可能返回 null，表示取不到有效值。
  * @method void setStatus(integer $Status) 设置溯源阶段状态 0: 无效, 1: 有效
-注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getTraceItems() 获取无
+ * @method void setTraceItems(array $TraceItems) 设置无
  */
 class TraceData extends AbstractModel
 {
     /**
      * @var string 溯源ID
-注意：此字段可能返回 null，表示取不到有效值。
      */
     public $TraceId;
 
     /**
      * @var integer 企业ID
-注意：此字段可能返回 null，表示取不到有效值。
      */
     public $CorpId;
 
     /**
      * @var integer 码类型 0: 批次, 1: 码, 2: 生产任务
-注意：此字段可能返回 null，表示取不到有效值。
      */
     public $Type;
 
@@ -109,19 +90,16 @@ class TraceData extends AbstractModel
 
     /**
      * @var integer 排序，在Phase相同情况下，值越小排名靠前
-注意：此字段可能返回 null，表示取不到有效值。
      */
     public $Rank;
 
     /**
      * @var integer 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
-注意：此字段可能返回 null，表示取不到有效值。
      */
     public $Phase;
 
     /**
      * @var string 溯源环节名称
-注意：此字段可能返回 null，表示取不到有效值。
      */
     public $PhaseName;
 
@@ -130,12 +108,6 @@ class TraceData extends AbstractModel
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $TraceTime;
-
-    /**
-     * @var array 无
-注意：此字段可能返回 null，表示取不到有效值。
-     */
-    public $TraceItems;
 
     /**
      * @var string 创建时间
@@ -169,28 +141,24 @@ class TraceData extends AbstractModel
 
     /**
      * @var integer 溯源阶段状态 0: 无效, 1: 有效
-注意：此字段可能返回 null，表示取不到有效值。
      */
     public $Status;
 
     /**
+     * @var array 无
+     */
+    public $TraceItems;
+
+    /**
      * @param string $TraceId 溯源ID
-注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $CorpId 企业ID
-注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $Type 码类型 0: 批次, 1: 码, 2: 生产任务
-注意：此字段可能返回 null，表示取不到有效值。
      * @param string $Code 码值，跟码类型一一对应
 注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $Rank 排序，在Phase相同情况下，值越小排名靠前
-注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $Phase 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
-注意：此字段可能返回 null，表示取不到有效值。
      * @param string $PhaseName 溯源环节名称
-注意：此字段可能返回 null，表示取不到有效值。
      * @param string $TraceTime 溯源时间
-注意：此字段可能返回 null，表示取不到有效值。
-     * @param array $TraceItems 无
 注意：此字段可能返回 null，表示取不到有效值。
      * @param string $CreateTime 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -203,7 +171,7 @@ class TraceData extends AbstractModel
      * @param PhaseData $PhaseData 溯源阶段配置
 注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $Status 溯源阶段状态 0: 无效, 1: 有效
-注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $TraceItems 无
      */
     function __construct()
     {
@@ -250,15 +218,6 @@ class TraceData extends AbstractModel
             $this->TraceTime = $param["TraceTime"];
         }
 
-        if (array_key_exists("TraceItems",$param) and $param["TraceItems"] !== null) {
-            $this->TraceItems = [];
-            foreach ($param["TraceItems"] as $key => $value){
-                $obj = new TraceItem();
-                $obj->deserialize($value);
-                array_push($this->TraceItems, $obj);
-            }
-        }
-
         if (array_key_exists("CreateTime",$param) and $param["CreateTime"] !== null) {
             $this->CreateTime = $param["CreateTime"];
         }
@@ -283,6 +242,15 @@ class TraceData extends AbstractModel
 
         if (array_key_exists("Status",$param) and $param["Status"] !== null) {
             $this->Status = $param["Status"];
+        }
+
+        if (array_key_exists("TraceItems",$param) and $param["TraceItems"] !== null) {
+            $this->TraceItems = [];
+            foreach ($param["TraceItems"] as $key => $value){
+                $obj = new TraceItem();
+                $obj->deserialize($value);
+                array_push($this->TraceItems, $obj);
+            }
         }
     }
 }

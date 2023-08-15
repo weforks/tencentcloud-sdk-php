@@ -24,16 +24,16 @@ use TencentCloud\Common\AbstractModel;
  * @method void setSortBy(string $SortBy) 设置返回结果按照该字段排序
  * @method string getSorting() 获取正序或者倒序，例如：desc
  * @method void setSorting(string $Sorting) 设置正序或者倒序，例如：desc
- * @method array getFilters() 获取按照该参数过滤,支持spark-job-name
- * @method void setFilters(array $Filters) 设置按照该参数过滤,支持spark-job-name
- * @method string getStartTime() 获取更新时间起始点
- * @method void setStartTime(string $StartTime) 设置更新时间起始点
- * @method string getEndTime() 获取更新时间截止点
- * @method void setEndTime(string $EndTime) 设置更新时间截止点
- * @method integer getOffset() 获取查询列表偏移量
- * @method void setOffset(integer $Offset) 设置查询列表偏移量
- * @method integer getLimit() 获取查询列表限制数量
- * @method void setLimit(integer $Limit) 设置查询列表限制数量
+ * @method array getFilters() 获取过滤条件，如下支持的过滤类型，传参Name应为其一:spark-job-name（作业名称），spark-job-id（作业id），spark-app-type（作业类型，1：批任务，2：流任务，4：SQL作业），user-name（创建人），key-word（作业名称或ID关键词模糊搜索）
+ * @method void setFilters(array $Filters) 设置过滤条件，如下支持的过滤类型，传参Name应为其一:spark-job-name（作业名称），spark-job-id（作业id），spark-app-type（作业类型，1：批任务，2：流任务，4：SQL作业），user-name（创建人），key-word（作业名称或ID关键词模糊搜索）
+ * @method string getStartTime() 获取更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
+ * @method void setStartTime(string $StartTime) 设置更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
+ * @method string getEndTime() 获取更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
+ * @method void setEndTime(string $EndTime) 设置更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
+ * @method integer getOffset() 获取查询列表偏移量, 默认值0
+ * @method void setOffset(integer $Offset) 设置查询列表偏移量, 默认值0
+ * @method integer getLimit() 获取查询列表限制数量, 默认值100
+ * @method void setLimit(integer $Limit) 设置查询列表限制数量, 默认值100
  */
 class DescribeSparkAppJobsRequest extends AbstractModel
 {
@@ -48,38 +48,38 @@ class DescribeSparkAppJobsRequest extends AbstractModel
     public $Sorting;
 
     /**
-     * @var array 按照该参数过滤,支持spark-job-name
+     * @var array 过滤条件，如下支持的过滤类型，传参Name应为其一:spark-job-name（作业名称），spark-job-id（作业id），spark-app-type（作业类型，1：批任务，2：流任务，4：SQL作业），user-name（创建人），key-word（作业名称或ID关键词模糊搜索）
      */
     public $Filters;
 
     /**
-     * @var string 更新时间起始点
+     * @var string 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
      */
     public $StartTime;
 
     /**
-     * @var string 更新时间截止点
+     * @var string 更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
      */
     public $EndTime;
 
     /**
-     * @var integer 查询列表偏移量
+     * @var integer 查询列表偏移量, 默认值0
      */
     public $Offset;
 
     /**
-     * @var integer 查询列表限制数量
+     * @var integer 查询列表限制数量, 默认值100
      */
     public $Limit;
 
     /**
      * @param string $SortBy 返回结果按照该字段排序
      * @param string $Sorting 正序或者倒序，例如：desc
-     * @param array $Filters 按照该参数过滤,支持spark-job-name
-     * @param string $StartTime 更新时间起始点
-     * @param string $EndTime 更新时间截止点
-     * @param integer $Offset 查询列表偏移量
-     * @param integer $Limit 查询列表限制数量
+     * @param array $Filters 过滤条件，如下支持的过滤类型，传参Name应为其一:spark-job-name（作业名称），spark-job-id（作业id），spark-app-type（作业类型，1：批任务，2：流任务，4：SQL作业），user-name（创建人），key-word（作业名称或ID关键词模糊搜索）
+     * @param string $StartTime 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
+     * @param string $EndTime 更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
+     * @param integer $Offset 查询列表偏移量, 默认值0
+     * @param integer $Limit 查询列表限制数量, 默认值100
      */
     function __construct()
     {

@@ -32,6 +32,16 @@ use TencentCloud\Common\AbstractModel;
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setIdCard(string $IdCard) 设置本次验证使用的身份证号。
 注意：此字段可能返回 null，表示取不到有效值。
+ * @method integer getUseIDType() 获取用户认证时使用的证件号码类型：
+0：二代身份证的证件号码
+1：港澳台居住证的证件号码
+2：其他（核验使用的证件号码非合法身份号码）
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setUseIDType(integer $UseIDType) 设置用户认证时使用的证件号码类型：
+0：二代身份证的证件号码
+1：港澳台居住证的证件号码
+2：其他（核验使用的证件号码非合法身份号码）
+注意：此字段可能返回 null，表示取不到有效值。
  * @method string getName() 获取本次验证使用的姓名。
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setName(string $Name) 设置本次验证使用的姓名。
@@ -144,6 +154,14 @@ use TencentCloud\Common\AbstractModel;
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setNFCBillingCounts(integer $NFCBillingCounts) 设置nfc重复计费计数
 注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getPassNo() 获取港澳台居住证通行证号码
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setPassNo(string $PassNo) 设置港澳台居住证通行证号码
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getVisaNum() 获取港澳台居住证签发次数
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setVisaNum(string $VisaNum) 设置港澳台居住证签发次数
+注意：此字段可能返回 null，表示取不到有效值。
  */
 class DetectInfoText extends AbstractModel
 {
@@ -164,6 +182,15 @@ class DetectInfoText extends AbstractModel
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $IdCard;
+
+    /**
+     * @var integer 用户认证时使用的证件号码类型：
+0：二代身份证的证件号码
+1：港澳台居住证的证件号码
+2：其他（核验使用的证件号码非合法身份号码）
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $UseIDType;
 
     /**
      * @var string 本次验证使用的姓名。
@@ -314,11 +341,28 @@ class DetectInfoText extends AbstractModel
     public $NFCBillingCounts;
 
     /**
+     * @var string 港澳台居住证通行证号码
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $PassNo;
+
+    /**
+     * @var string 港澳台居住证签发次数
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $VisaNum;
+
+    /**
      * @param integer $ErrCode 本次流程最终验证结果。0为成功
 注意：此字段可能返回 null，表示取不到有效值。
      * @param string $ErrMsg 本次流程最终验证结果描述。（仅描述用，文案更新时不会通知。）
 注意：此字段可能返回 null，表示取不到有效值。
      * @param string $IdCard 本次验证使用的身份证号。
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param integer $UseIDType 用户认证时使用的证件号码类型：
+0：二代身份证的证件号码
+1：港澳台居住证的证件号码
+2：其他（核验使用的证件号码非合法身份号码）
 注意：此字段可能返回 null，表示取不到有效值。
      * @param string $Name 本次验证使用的姓名。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -376,6 +420,10 @@ class DetectInfoText extends AbstractModel
 注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $NFCBillingCounts nfc重复计费计数
 注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $PassNo 港澳台居住证通行证号码
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $VisaNum 港澳台居住证签发次数
+注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
     {
@@ -400,6 +448,10 @@ class DetectInfoText extends AbstractModel
 
         if (array_key_exists("IdCard",$param) and $param["IdCard"] !== null) {
             $this->IdCard = $param["IdCard"];
+        }
+
+        if (array_key_exists("UseIDType",$param) and $param["UseIDType"] !== null) {
+            $this->UseIDType = $param["UseIDType"];
         }
 
         if (array_key_exists("Name",$param) and $param["Name"] !== null) {
@@ -497,6 +549,14 @@ class DetectInfoText extends AbstractModel
 
         if (array_key_exists("NFCBillingCounts",$param) and $param["NFCBillingCounts"] !== null) {
             $this->NFCBillingCounts = $param["NFCBillingCounts"];
+        }
+
+        if (array_key_exists("PassNo",$param) and $param["PassNo"] !== null) {
+            $this->PassNo = $param["PassNo"];
+        }
+
+        if (array_key_exists("VisaNum",$param) and $param["VisaNum"] !== null) {
+            $this->VisaNum = $param["VisaNum"];
         }
     }
 }

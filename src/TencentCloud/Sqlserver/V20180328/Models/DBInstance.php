@@ -76,8 +76,8 @@ use TencentCloud\Common\AbstractModel;
  * @method void setCpu(integer $Cpu) 设置实例cpu核心数
  * @method string getVersion() 获取实例版本代号
  * @method void setVersion(string $Version) 设置实例版本代号
- * @method string getType() 获取物理机代号
- * @method void setType(string $Type) 设置物理机代号
+ * @method string getType() 获取实例类型代号："TS85"-物理机，本地SSD硬盘；"Z3"-物理机早期版本，本地SSD硬盘；"CLOUD_BASIC"-虚拟机，普通云硬盘；"CLOUD_PREMIUM"-虚拟机，高性能云硬盘；"CLOUD_SSD"-虚拟机，云SSD硬盘；"CLOUD_HSSD"-虚拟机，增强型SSD云硬盘；"CLOUD_TSSD"-虚拟机，极速型SSD云硬盘；"CLOUD_BSSD"-虚拟机，通用型SSD云硬盘
+ * @method void setType(string $Type) 设置实例类型代号："TS85"-物理机，本地SSD硬盘；"Z3"-物理机早期版本，本地SSD硬盘；"CLOUD_BASIC"-虚拟机，普通云硬盘；"CLOUD_PREMIUM"-虚拟机，高性能云硬盘；"CLOUD_SSD"-虚拟机，云SSD硬盘；"CLOUD_HSSD"-虚拟机，增强型SSD云硬盘；"CLOUD_TSSD"-虚拟机，极速型SSD云硬盘；"CLOUD_BSSD"-虚拟机，通用型SSD云硬盘
  * @method integer getPid() 获取计费ID
  * @method void setPid(integer $Pid) 设置计费ID
  * @method string getUniqVpcId() 获取实例所属VPC的唯一字符串ID，格式如：vpc-xxx，基础网络时为空字符串
@@ -139,6 +139,14 @@ use TencentCloud\Common\AbstractModel;
  * @method SlaveZones getSlaveZones() 获取备可用区信息
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setSlaveZones(SlaveZones $SlaveZones) 设置备可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getArchitecture() 获取架构标识，SINGLE-单节点 DOUBLE-双节点
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setArchitecture(string $Architecture) 设置架构标识，SINGLE-单节点 DOUBLE-双节点
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getStyle() 获取类型标识，EXCLUSIVE-独享型，SHARED-共享型
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setStyle(string $Style) 设置类型标识，EXCLUSIVE-独享型，SHARED-共享型
 注意：此字段可能返回 null，表示取不到有效值。
  */
 class DBInstance extends AbstractModel
@@ -284,7 +292,7 @@ class DBInstance extends AbstractModel
     public $Version;
 
     /**
-     * @var string 物理机代号
+     * @var string 实例类型代号："TS85"-物理机，本地SSD硬盘；"Z3"-物理机早期版本，本地SSD硬盘；"CLOUD_BASIC"-虚拟机，普通云硬盘；"CLOUD_PREMIUM"-虚拟机，高性能云硬盘；"CLOUD_SSD"-虚拟机，云SSD硬盘；"CLOUD_HSSD"-虚拟机，增强型SSD云硬盘；"CLOUD_TSSD"-虚拟机，极速型SSD云硬盘；"CLOUD_BSSD"-虚拟机，通用型SSD云硬盘
      */
     public $Type;
 
@@ -412,6 +420,18 @@ class DBInstance extends AbstractModel
     public $SlaveZones;
 
     /**
+     * @var string 架构标识，SINGLE-单节点 DOUBLE-双节点
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $Architecture;
+
+    /**
+     * @var string 类型标识，EXCLUSIVE-独享型，SHARED-共享型
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $Style;
+
+    /**
      * @param string $InstanceId 实例ID
      * @param string $Name 实例名称
      * @param integer $ProjectId 实例所在项目ID
@@ -440,7 +460,7 @@ class DBInstance extends AbstractModel
      * @param string $Uid 实例唯一UID
      * @param integer $Cpu 实例cpu核心数
      * @param string $Version 实例版本代号
-     * @param string $Type 物理机代号
+     * @param string $Type 实例类型代号："TS85"-物理机，本地SSD硬盘；"Z3"-物理机早期版本，本地SSD硬盘；"CLOUD_BASIC"-虚拟机，普通云硬盘；"CLOUD_PREMIUM"-虚拟机，高性能云硬盘；"CLOUD_SSD"-虚拟机，云SSD硬盘；"CLOUD_HSSD"-虚拟机，增强型SSD云硬盘；"CLOUD_TSSD"-虚拟机，极速型SSD云硬盘；"CLOUD_BSSD"-虚拟机，通用型SSD云硬盘
      * @param integer $Pid 计费ID
      * @param string $UniqVpcId 实例所属VPC的唯一字符串ID，格式如：vpc-xxx，基础网络时为空字符串
      * @param string $UniqSubnetId 实例所属子网的唯一字符串ID，格式如： subnet-xxx，基础网络时为空字符串
@@ -471,6 +491,10 @@ class DBInstance extends AbstractModel
      * @param string $TimeZone 系统时区，默认：China Standard Time
      * @param boolean $IsDrZone 是否跨AZ
      * @param SlaveZones $SlaveZones 备可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $Architecture 架构标识，SINGLE-单节点 DOUBLE-双节点
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $Style 类型标识，EXCLUSIVE-独享型，SHARED-共享型
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -698,6 +722,14 @@ class DBInstance extends AbstractModel
         if (array_key_exists("SlaveZones",$param) and $param["SlaveZones"] !== null) {
             $this->SlaveZones = new SlaveZones();
             $this->SlaveZones->deserialize($param["SlaveZones"]);
+        }
+
+        if (array_key_exists("Architecture",$param) and $param["Architecture"] !== null) {
+            $this->Architecture = $param["Architecture"];
+        }
+
+        if (array_key_exists("Style",$param) and $param["Style"] !== null) {
+            $this->Style = $param["Style"];
         }
     }
 }

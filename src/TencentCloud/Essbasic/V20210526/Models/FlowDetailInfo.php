@@ -26,20 +26,40 @@ use TencentCloud\Common\AbstractModel;
  * @method void setFlowName(string $FlowName) 设置合同(流程)的名字
  * @method string getFlowType() 获取合同(流程)的类型
  * @method void setFlowType(string $FlowType) 设置合同(流程)的类型
- * @method string getFlowStatus() 获取合同(流程)的状态
- * @method void setFlowStatus(string $FlowStatus) 设置合同(流程)的状态
+ * @method string getFlowStatus() 获取合同(流程)的状态, 状态如下
+
+INIT 合同创建
+PART 合同签署中
+REJECT 合同拒签
+ALL 合同签署完成
+DEADLINE 合同流签(合同过期)
+CANCEL 合同撤回
+RELIEVED 解除协议（已解除）
+ 
+ * @method void setFlowStatus(string $FlowStatus) 设置合同(流程)的状态, 状态如下
+
+INIT 合同创建
+PART 合同签署中
+REJECT 合同拒签
+ALL 合同签署完成
+DEADLINE 合同流签(合同过期)
+CANCEL 合同撤回
+RELIEVED 解除协议（已解除）
+ 
  * @method string getFlowMessage() 获取合同(流程)的信息
  * @method void setFlowMessage(string $FlowMessage) 设置合同(流程)的信息
- * @method integer getCreateOn() 获取合同(流程)的创建时间戳
- * @method void setCreateOn(integer $CreateOn) 设置合同(流程)的创建时间戳
- * @method integer getDeadLine() 获取合同(流程)的签署截止时间戳
- * @method void setDeadLine(integer $DeadLine) 设置合同(流程)的签署截止时间戳
+ * @method integer getCreateOn() 获取合同(流程)的创建时间戳，单位秒
+ * @method void setCreateOn(integer $CreateOn) 设置合同(流程)的创建时间戳，单位秒
+ * @method integer getDeadLine() 获取合同(流程)的签署截止时间戳，单位秒
+ * @method void setDeadLine(integer $DeadLine) 设置合同(流程)的签署截止时间戳，单位秒
  * @method string getCustomData() 获取用户自定义数据
  * @method void setCustomData(string $CustomData) 设置用户自定义数据
  * @method array getFlowApproverInfos() 获取合同(流程)的签署人数组
  * @method void setFlowApproverInfos(array $FlowApproverInfos) 设置合同(流程)的签署人数组
  * @method array getCcInfos() 获取合同(流程)关注方信息列表
  * @method void setCcInfos(array $CcInfos) 设置合同(流程)关注方信息列表
+ * @method boolean getNeedCreateReview() 获取是否需要发起前审批，当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程
+ * @method void setNeedCreateReview(boolean $NeedCreateReview) 设置是否需要发起前审批，当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程
  */
 class FlowDetailInfo extends AbstractModel
 {
@@ -59,7 +79,16 @@ class FlowDetailInfo extends AbstractModel
     public $FlowType;
 
     /**
-     * @var string 合同(流程)的状态
+     * @var string 合同(流程)的状态, 状态如下
+
+INIT 合同创建
+PART 合同签署中
+REJECT 合同拒签
+ALL 合同签署完成
+DEADLINE 合同流签(合同过期)
+CANCEL 合同撤回
+RELIEVED 解除协议（已解除）
+ 
      */
     public $FlowStatus;
 
@@ -69,12 +98,12 @@ class FlowDetailInfo extends AbstractModel
     public $FlowMessage;
 
     /**
-     * @var integer 合同(流程)的创建时间戳
+     * @var integer 合同(流程)的创建时间戳，单位秒
      */
     public $CreateOn;
 
     /**
-     * @var integer 合同(流程)的签署截止时间戳
+     * @var integer 合同(流程)的签署截止时间戳，单位秒
      */
     public $DeadLine;
 
@@ -94,16 +123,31 @@ class FlowDetailInfo extends AbstractModel
     public $CcInfos;
 
     /**
+     * @var boolean 是否需要发起前审批，当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程
+     */
+    public $NeedCreateReview;
+
+    /**
      * @param string $FlowId 合同(流程)的Id
      * @param string $FlowName 合同(流程)的名字
      * @param string $FlowType 合同(流程)的类型
-     * @param string $FlowStatus 合同(流程)的状态
+     * @param string $FlowStatus 合同(流程)的状态, 状态如下
+
+INIT 合同创建
+PART 合同签署中
+REJECT 合同拒签
+ALL 合同签署完成
+DEADLINE 合同流签(合同过期)
+CANCEL 合同撤回
+RELIEVED 解除协议（已解除）
+ 
      * @param string $FlowMessage 合同(流程)的信息
-     * @param integer $CreateOn 合同(流程)的创建时间戳
-     * @param integer $DeadLine 合同(流程)的签署截止时间戳
+     * @param integer $CreateOn 合同(流程)的创建时间戳，单位秒
+     * @param integer $DeadLine 合同(流程)的签署截止时间戳，单位秒
      * @param string $CustomData 用户自定义数据
      * @param array $FlowApproverInfos 合同(流程)的签署人数组
      * @param array $CcInfos 合同(流程)关注方信息列表
+     * @param boolean $NeedCreateReview 是否需要发起前审批，当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程
      */
     function __construct()
     {
@@ -166,6 +210,10 @@ class FlowDetailInfo extends AbstractModel
                 $obj->deserialize($value);
                 array_push($this->CcInfos, $obj);
             }
+        }
+
+        if (array_key_exists("NeedCreateReview",$param) and $param["NeedCreateReview"] !== null) {
+            $this->NeedCreateReview = $param["NeedCreateReview"];
         }
     }
 }

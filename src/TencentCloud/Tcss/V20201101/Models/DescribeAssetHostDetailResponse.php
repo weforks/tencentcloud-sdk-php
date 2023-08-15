@@ -20,8 +20,8 @@ use TencentCloud\Common\AbstractModel;
 /**
  * DescribeAssetHostDetail返回参数结构体
  *
- * @method string getUUID() 获取云镜uuid
- * @method void setUUID(string $UUID) 设置云镜uuid
+ * @method string getUUID() 获取容器安全uuid
+ * @method void setUUID(string $UUID) 设置容器安全uuid
  * @method string getUpdateTime() 获取更新时间
  * @method void setUpdateTime(string $UpdateTime) 设置更新时间
  * @method string getHostName() 获取主机名
@@ -72,13 +72,19 @@ use TencentCloud\Common\AbstractModel;
  * @method void setProject(ProjectInfo $Project) 设置所属项目
  * @method array getTags() 获取标签
  * @method void setTags(array $Tags) 设置标签
+ * @method string getClusterID() 获取集群ID
+ * @method void setClusterID(string $ClusterID) 设置集群ID
+ * @method string getClusterName() 获取集群名称
+ * @method void setClusterName(string $ClusterName) 设置集群名称
+ * @method string getClusterAccessedStatus() 获取集群接入状态
+ * @method void setClusterAccessedStatus(string $ClusterAccessedStatus) 设置集群接入状态
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
 class DescribeAssetHostDetailResponse extends AbstractModel
 {
     /**
-     * @var string 云镜uuid
+     * @var string 容器安全uuid
      */
     public $UUID;
 
@@ -208,12 +214,27 @@ class DescribeAssetHostDetailResponse extends AbstractModel
     public $Tags;
 
     /**
+     * @var string 集群ID
+     */
+    public $ClusterID;
+
+    /**
+     * @var string 集群名称
+     */
+    public $ClusterName;
+
+    /**
+     * @var string 集群接入状态
+     */
+    public $ClusterAccessedStatus;
+
+    /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     public $RequestId;
 
     /**
-     * @param string $UUID 云镜uuid
+     * @param string $UUID 容器安全uuid
      * @param string $UpdateTime 更新时间
      * @param string $HostName 主机名
      * @param string $Group 主机分组
@@ -239,6 +260,9 @@ class DescribeAssetHostDetailResponse extends AbstractModel
      * @param integer $RegionID 地域ID
      * @param ProjectInfo $Project 所属项目
      * @param array $Tags 标签
+     * @param string $ClusterID 集群ID
+     * @param string $ClusterName 集群名称
+     * @param string $ClusterAccessedStatus 集群接入状态
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -362,6 +386,18 @@ class DescribeAssetHostDetailResponse extends AbstractModel
                 $obj->deserialize($value);
                 array_push($this->Tags, $obj);
             }
+        }
+
+        if (array_key_exists("ClusterID",$param) and $param["ClusterID"] !== null) {
+            $this->ClusterID = $param["ClusterID"];
+        }
+
+        if (array_key_exists("ClusterName",$param) and $param["ClusterName"] !== null) {
+            $this->ClusterName = $param["ClusterName"];
+        }
+
+        if (array_key_exists("ClusterAccessedStatus",$param) and $param["ClusterAccessedStatus"] !== null) {
+            $this->ClusterAccessedStatus = $param["ClusterAccessedStatus"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {

@@ -44,13 +44,13 @@ use TencentCloud\Common\AbstractModel;
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setHeat(integer $Heat) 设置热度
 注意：此字段可能返回 null，表示取不到有效值。
- * @method integer getBlockStatus() 获取协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
+ * @method integer getBlockStatus() 获取拦截处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setBlockStatus(integer $BlockStatus) 设置协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
+ * @method void setBlockStatus(integer $BlockStatus) 设置拦截处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
 注意：此字段可能返回 null，表示取不到有效值。
- * @method string getBlockNote() 获取协助处置状态说明
+ * @method string getBlockNote() 获取拦截处置状态说明
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setBlockNote(string $BlockNote) 设置协助处置状态说明
+ * @method void setBlockNote(string $BlockNote) 设置拦截处置状态说明
 注意：此字段可能返回 null，表示取不到有效值。
  * @method integer getOfflineStatus() 获取关停状态：0-未关停 1-关停中 2-关停成功 3-关停失败 4-重复上架
 注意：此字段可能返回 null，表示取不到有效值。
@@ -104,6 +104,14 @@ use TencentCloud\Common\AbstractModel;
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setSnapshot(string $Snapshot) 设置网址截图
 注意：此字段可能返回 null，表示取不到有效值。
+ * @method integer getAccountStatus() 获取账户资源状态：0-不可用 1-可用
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setAccountStatus(integer $AccountStatus) 设置账户资源状态：0-不可用 1-可用
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method integer getAuditStatus() 获取审核状态：0-未审核 1-审核中 2-审核成功 3-审核失败
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setAuditStatus(integer $AuditStatus) 设置审核状态：0-未审核 1-审核中 2-审核成功 3-审核失败
+注意：此字段可能返回 null，表示取不到有效值。
  */
 class FakeURLData extends AbstractModel
 {
@@ -144,13 +152,13 @@ class FakeURLData extends AbstractModel
     public $Heat;
 
     /**
-     * @var integer 协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
+     * @var integer 拦截处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $BlockStatus;
 
     /**
-     * @var string 协助处置状态说明
+     * @var string 拦截处置状态说明
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $BlockNote;
@@ -234,6 +242,18 @@ class FakeURLData extends AbstractModel
     public $Snapshot;
 
     /**
+     * @var integer 账户资源状态：0-不可用 1-可用
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $AccountStatus;
+
+    /**
+     * @var integer 审核状态：0-未审核 1-审核中 2-审核成功 3-审核失败
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $AuditStatus;
+
+    /**
      * @param integer $FakeURLId 仿冒网址id
 注意：此字段可能返回 null，表示取不到有效值。
      * @param string $BrandName 品牌名称
@@ -246,9 +266,9 @@ class FakeURLData extends AbstractModel
 注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $Heat 热度
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param integer $BlockStatus 协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
+     * @param integer $BlockStatus 拦截处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param string $BlockNote 协助处置状态说明
+     * @param string $BlockNote 拦截处置状态说明
 注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $OfflineStatus 关停状态：0-未关停 1-关停中 2-关停成功 3-关停失败 4-重复上架
 注意：此字段可能返回 null，表示取不到有效值。
@@ -275,6 +295,10 @@ class FakeURLData extends AbstractModel
      * @param integer $CertificationStatus 资质证明状态：0-不可用 1-可用
 注意：此字段可能返回 null，表示取不到有效值。
      * @param string $Snapshot 网址截图
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param integer $AccountStatus 账户资源状态：0-不可用 1-可用
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param integer $AuditStatus 审核状态：0-未审核 1-审核中 2-审核成功 3-审核失败
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -372,6 +396,14 @@ class FakeURLData extends AbstractModel
 
         if (array_key_exists("Snapshot",$param) and $param["Snapshot"] !== null) {
             $this->Snapshot = $param["Snapshot"];
+        }
+
+        if (array_key_exists("AccountStatus",$param) and $param["AccountStatus"] !== null) {
+            $this->AccountStatus = $param["AccountStatus"];
+        }
+
+        if (array_key_exists("AuditStatus",$param) and $param["AuditStatus"] !== null) {
+            $this->AuditStatus = $param["AuditStatus"];
         }
     }
 }

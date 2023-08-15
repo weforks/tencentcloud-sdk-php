@@ -30,8 +30,8 @@ use TencentCloud\Common\AbstractModel;
  * @method void setShipperName(string $ShipperName) 设置投递规则的名字
  * @method integer getInterval() 获取投递的时间间隔，单位 秒，默认300，范围 300-900
  * @method void setInterval(integer $Interval) 设置投递的时间间隔，单位 秒，默认300，范围 300-900
- * @method integer getMaxSize() 获取投递的文件的最大值，单位 MB，默认256，范围 100-256
- * @method void setMaxSize(integer $MaxSize) 设置投递的文件的最大值，单位 MB，默认256，范围 100-256
+ * @method integer getMaxSize() 获取投递的文件的最大值，单位 MB，默认256，范围 5-256
+ * @method void setMaxSize(integer $MaxSize) 设置投递的文件的最大值，单位 MB，默认256，范围 5-256
  * @method array getFilterRules() 获取投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
  * @method void setFilterRules(array $FilterRules) 设置投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
  * @method string getPartition() 获取投递日志的分区规则，支持strftime的时间格式表示
@@ -42,6 +42,10 @@ use TencentCloud\Common\AbstractModel;
  * @method void setContent(ContentInfo $Content) 设置投递日志的内容格式配置
  * @method integer getFilenameMode() 获取投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
  * @method void setFilenameMode(integer $FilenameMode) 设置投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+ * @method integer getStartTime() 获取投递数据范围的开始时间点，不能超出日志主题的生命周期起点。如果用户不填写，默认为用户新建投递任务的时间。
+ * @method void setStartTime(integer $StartTime) 设置投递数据范围的开始时间点，不能超出日志主题的生命周期起点。如果用户不填写，默认为用户新建投递任务的时间。
+ * @method integer getEndTime() 获取投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
+ * @method void setEndTime(integer $EndTime) 设置投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
  */
 class CreateShipperRequest extends AbstractModel
 {
@@ -71,7 +75,7 @@ class CreateShipperRequest extends AbstractModel
     public $Interval;
 
     /**
-     * @var integer 投递的文件的最大值，单位 MB，默认256，范围 100-256
+     * @var integer 投递的文件的最大值，单位 MB，默认256，范围 5-256
      */
     public $MaxSize;
 
@@ -101,17 +105,29 @@ class CreateShipperRequest extends AbstractModel
     public $FilenameMode;
 
     /**
+     * @var integer 投递数据范围的开始时间点，不能超出日志主题的生命周期起点。如果用户不填写，默认为用户新建投递任务的时间。
+     */
+    public $StartTime;
+
+    /**
+     * @var integer 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
+     */
+    public $EndTime;
+
+    /**
      * @param string $TopicId 创建的投递规则所属的日志主题ID
      * @param string $Bucket 创建的投递规则投递的bucket
      * @param string $Prefix 创建的投递规则投递目录的前缀
      * @param string $ShipperName 投递规则的名字
      * @param integer $Interval 投递的时间间隔，单位 秒，默认300，范围 300-900
-     * @param integer $MaxSize 投递的文件的最大值，单位 MB，默认256，范围 100-256
+     * @param integer $MaxSize 投递的文件的最大值，单位 MB，默认256，范围 5-256
      * @param array $FilterRules 投递日志的过滤规则，匹配的日志进行投递，各rule之间是and关系，最多5个，数组为空则表示不过滤而全部投递
      * @param string $Partition 投递日志的分区规则，支持strftime的时间格式表示
      * @param CompressInfo $Compress 投递日志的压缩配置
      * @param ContentInfo $Content 投递日志的内容格式配置
      * @param integer $FilenameMode 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+     * @param integer $StartTime 投递数据范围的开始时间点，不能超出日志主题的生命周期起点。如果用户不填写，默认为用户新建投递任务的时间。
+     * @param integer $EndTime 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
      */
     function __construct()
     {
@@ -175,6 +191,14 @@ class CreateShipperRequest extends AbstractModel
 
         if (array_key_exists("FilenameMode",$param) and $param["FilenameMode"] !== null) {
             $this->FilenameMode = $param["FilenameMode"];
+        }
+
+        if (array_key_exists("StartTime",$param) and $param["StartTime"] !== null) {
+            $this->StartTime = $param["StartTime"];
+        }
+
+        if (array_key_exists("EndTime",$param) and $param["EndTime"] !== null) {
+            $this->EndTime = $param["EndTime"];
         }
     }
 }

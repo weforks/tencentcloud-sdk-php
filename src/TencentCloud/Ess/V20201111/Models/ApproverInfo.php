@@ -25,57 +25,81 @@ use TencentCloud\Common\AbstractModel;
 1：个人
 3：企业静默签署
 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
+7: 个人自动签署，适用于个人自动签场景。
+注: 个人自动签场景为白名单功能, 使用前请联系对接的客户经理沟通。
  * @method void setApproverType(integer $ApproverType) 设置参与者类型：
 0：企业
 1：个人
 3：企业静默签署
 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
- * @method string getApproverName() 获取本环节需要操作人的名字
- * @method void setApproverName(string $ApproverName) 设置本环节需要操作人的名字
- * @method string getApproverMobile() 获取本环节需要操作人的手机号
- * @method void setApproverMobile(string $ApproverMobile) 设置本环节需要操作人的手机号
- * @method array getSignComponents() 获取本环节操作人签署控件配置
- * @method void setSignComponents(array $SignComponents) 设置本环节操作人签署控件配置
- * @method string getOrganizationName() 获取如果是企业,则为企业的名字
- * @method void setOrganizationName(string $OrganizationName) 设置如果是企业,则为企业的名字
- * @method string getApproverIdCardNumber() 获取身份证号
- * @method void setApproverIdCardNumber(string $ApproverIdCardNumber) 设置身份证号
- * @method string getApproverIdCardType() 获取证件类型 
+7: 个人自动签署，适用于个人自动签场景。
+注: 个人自动签场景为白名单功能, 使用前请联系对接的客户经理沟通。
+ * @method string getApproverName() 获取签署人的姓名
+ * @method void setApproverName(string $ApproverName) 设置签署人的姓名
+ * @method string getApproverMobile() 获取签署人的手机号，11位数字
+ * @method void setApproverMobile(string $ApproverMobile) 设置签署人的手机号，11位数字
+ * @method string getOrganizationName() 获取如果签署方是企业签署方(approverType = 1 或者 approverType = 3)，
+
+则企业名称必填
+ * @method void setOrganizationName(string $OrganizationName) 设置如果签署方是企业签署方(approverType = 1 或者 approverType = 3)，
+
+则企业名称必填
+ * @method array getSignComponents() 获取签署人的签署控件列表
+ * @method void setSignComponents(array $SignComponents) 设置签署人的签署控件列表
+ * @method string getApproverIdCardType() 获取签署人的证件类型
 ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
- * @method void setApproverIdCardType(string $ApproverIdCardType) 设置证件类型 
+OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
+ * @method void setApproverIdCardType(string $ApproverIdCardType) 设置签署人的证件类型
 ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
- * @method string getNotifyType() 获取sms--短信，none--不通知
- * @method void setNotifyType(string $NotifyType) 设置sms--短信，none--不通知
- * @method integer getApproverRole() 获取1--收款人、2--开具人、3--见证人
- * @method void setApproverRole(integer $ApproverRole) 设置1--收款人、2--开具人、3--见证人
- * @method array getVerifyChannel() 获取签署意愿确认渠道,WEIXINAPP:人脸识别
- * @method void setVerifyChannel(array $VerifyChannel) 设置签署意愿确认渠道,WEIXINAPP:人脸识别
+OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
+ * @method string getApproverIdCardNumber() 获取签署人证件号（长度不超过18位）	
+ * @method void setApproverIdCardNumber(string $ApproverIdCardNumber) 设置签署人证件号（长度不超过18位）	
+ * @method string getNotifyType() 获取签署通知类型：sms--短信，none--不通知
+ * @method void setNotifyType(string $NotifyType) 设置签署通知类型：sms--短信，none--不通知
+ * @method integer getApproverRole() 获取签署人角色类型：1--收款人、2--开具人、3--见证人
+ * @method void setApproverRole(integer $ApproverRole) 设置签署人角色类型：1--收款人、2--开具人、3--见证人
+ * @method array getVerifyChannel() 获取签署意愿确认渠道，默认为WEIXINAPP:人脸识别
+ * @method void setVerifyChannel(array $VerifyChannel) 设置签署意愿确认渠道，默认为WEIXINAPP:人脸识别
  * @method integer getPreReadTime() 获取合同的强制预览时间：3~300s，未指定则按合同页数计算
  * @method void setPreReadTime(integer $PreReadTime) 设置合同的强制预览时间：3~300s，未指定则按合同页数计算
- * @method string getUserId() 获取签署人userId，传此字段则不用传姓名、手机号
- * @method void setUserId(string $UserId) 设置签署人userId，传此字段则不用传姓名、手机号
- * @method string getApproverSource() 获取签署人用户来源,企微侧用户请传入：WEWORKAPP
- * @method void setApproverSource(string $ApproverSource) 设置签署人用户来源,企微侧用户请传入：WEWORKAPP
- * @method string getCustomApproverTag() 获取客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
- * @method void setCustomApproverTag(string $CustomApproverTag) 设置客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
+ * @method string getUserId() 获取签署人userId，仅支持本企业的员工userid， 可在控制台组织管理处获得
+
+若传此字段 则以userid的信息为主，会覆盖传递过来的签署人基本信息， 包括姓名，手机号，证件类型等信息
+ * @method void setUserId(string $UserId) 设置签署人userId，仅支持本企业的员工userid， 可在控制台组织管理处获得
+
+若传此字段 则以userid的信息为主，会覆盖传递过来的签署人基本信息， 包括姓名，手机号，证件类型等信息
+ * @method string getApproverSource() 获取签署人用户来源，此参数仅针对企微用户开放
+
+企微侧用户请传入：WEWORKAPP
+ * @method void setApproverSource(string $ApproverSource) 设置签署人用户来源，此参数仅针对企微用户开放
+
+企微侧用户请传入：WEWORKAPP
+ * @method string getCustomApproverTag() 获取企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
+ * @method void setCustomApproverTag(string $CustomApproverTag) 设置企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
  * @method ApproverOption getApproverOption() 获取签署人个性化能力值
  * @method void setApproverOption(ApproverOption $ApproverOption) 设置签署人个性化能力值
  * @method array getApproverVerifyTypes() 获取签署人查看合同时认证方式, 
 1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
 如果不传默认为1
+模板发起的时候,认证方式以模板配置为主
  * @method void setApproverVerifyTypes(array $ApproverVerifyTypes) 设置签署人查看合同时认证方式, 
 1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
 如果不传默认为1
+模板发起的时候,认证方式以模板配置为主
  * @method array getApproverSignTypes() 获取签署人签署合同时的认证方式
 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 合同签署认证方式的优先级 verifyChannel>approverSignTypes
+模板发起的时候,认证方式以模板配置为主
  * @method void setApproverSignTypes(array $ApproverSignTypes) 设置签署人签署合同时的认证方式
 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 合同签署认证方式的优先级 verifyChannel>approverSignTypes
+模板发起的时候,认证方式以模板配置为主
+ * @method boolean getApproverNeedSignReview() 获取当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
+ * @method void setApproverNeedSignReview(boolean $ApproverNeedSignReview) 设置当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
  */
 class ApproverInfo extends AbstractModel
 {
@@ -85,54 +109,59 @@ class ApproverInfo extends AbstractModel
 1：个人
 3：企业静默签署
 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
+7: 个人自动签署，适用于个人自动签场景。
+注: 个人自动签场景为白名单功能, 使用前请联系对接的客户经理沟通。
      */
     public $ApproverType;
 
     /**
-     * @var string 本环节需要操作人的名字
+     * @var string 签署人的姓名
      */
     public $ApproverName;
 
     /**
-     * @var string 本环节需要操作人的手机号
+     * @var string 签署人的手机号，11位数字
      */
     public $ApproverMobile;
 
     /**
-     * @var array 本环节操作人签署控件配置
-     */
-    public $SignComponents;
+     * @var string 如果签署方是企业签署方(approverType = 1 或者 approverType = 3)，
 
-    /**
-     * @var string 如果是企业,则为企业的名字
+则企业名称必填
      */
     public $OrganizationName;
 
     /**
-     * @var string 身份证号
+     * @var array 签署人的签署控件列表
      */
-    public $ApproverIdCardNumber;
+    public $SignComponents;
 
     /**
-     * @var string 证件类型 
+     * @var string 签署人的证件类型
 ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
      */
     public $ApproverIdCardType;
 
     /**
-     * @var string sms--短信，none--不通知
+     * @var string 签署人证件号（长度不超过18位）	
+     */
+    public $ApproverIdCardNumber;
+
+    /**
+     * @var string 签署通知类型：sms--短信，none--不通知
      */
     public $NotifyType;
 
     /**
-     * @var integer 1--收款人、2--开具人、3--见证人
+     * @var integer 签署人角色类型：1--收款人、2--开具人、3--见证人
      */
     public $ApproverRole;
 
     /**
-     * @var array 签署意愿确认渠道,WEIXINAPP:人脸识别
+     * @var array 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
      */
     public $VerifyChannel;
 
@@ -142,17 +171,21 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
     public $PreReadTime;
 
     /**
-     * @var string 签署人userId，传此字段则不用传姓名、手机号
+     * @var string 签署人userId，仅支持本企业的员工userid， 可在控制台组织管理处获得
+
+若传此字段 则以userid的信息为主，会覆盖传递过来的签署人基本信息， 包括姓名，手机号，证件类型等信息
      */
     public $UserId;
 
     /**
-     * @var string 签署人用户来源,企微侧用户请传入：WEWORKAPP
+     * @var string 签署人用户来源，此参数仅针对企微用户开放
+
+企微侧用户请传入：WEWORKAPP
      */
     public $ApproverSource;
 
     /**
-     * @var string 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
+     * @var string 企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
      */
     public $CustomApproverTag;
 
@@ -165,6 +198,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
      * @var array 签署人查看合同时认证方式, 
 1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
 如果不传默认为1
+模板发起的时候,认证方式以模板配置为主
      */
     public $ApproverVerifyTypes;
 
@@ -172,8 +206,14 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
      * @var array 签署人签署合同时的认证方式
 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 合同签署认证方式的优先级 verifyChannel>approverSignTypes
+模板发起的时候,认证方式以模板配置为主
      */
     public $ApproverSignTypes;
+
+    /**
+     * @var boolean 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
+     */
+    public $ApproverNeedSignReview;
 
     /**
      * @param integer $ApproverType 参与者类型：
@@ -181,29 +221,41 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
 1：个人
 3：企业静默签署
 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
-     * @param string $ApproverName 本环节需要操作人的名字
-     * @param string $ApproverMobile 本环节需要操作人的手机号
-     * @param array $SignComponents 本环节操作人签署控件配置
-     * @param string $OrganizationName 如果是企业,则为企业的名字
-     * @param string $ApproverIdCardNumber 身份证号
-     * @param string $ApproverIdCardType 证件类型 
+7: 个人自动签署，适用于个人自动签场景。
+注: 个人自动签场景为白名单功能, 使用前请联系对接的客户经理沟通。
+     * @param string $ApproverName 签署人的姓名
+     * @param string $ApproverMobile 签署人的手机号，11位数字
+     * @param string $OrganizationName 如果签署方是企业签署方(approverType = 1 或者 approverType = 3)，
+
+则企业名称必填
+     * @param array $SignComponents 签署人的签署控件列表
+     * @param string $ApproverIdCardType 签署人的证件类型
 ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
-     * @param string $NotifyType sms--短信，none--不通知
-     * @param integer $ApproverRole 1--收款人、2--开具人、3--见证人
-     * @param array $VerifyChannel 签署意愿确认渠道,WEIXINAPP:人脸识别
+OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
+     * @param string $ApproverIdCardNumber 签署人证件号（长度不超过18位）	
+     * @param string $NotifyType 签署通知类型：sms--短信，none--不通知
+     * @param integer $ApproverRole 签署人角色类型：1--收款人、2--开具人、3--见证人
+     * @param array $VerifyChannel 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
      * @param integer $PreReadTime 合同的强制预览时间：3~300s，未指定则按合同页数计算
-     * @param string $UserId 签署人userId，传此字段则不用传姓名、手机号
-     * @param string $ApproverSource 签署人用户来源,企微侧用户请传入：WEWORKAPP
-     * @param string $CustomApproverTag 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
+     * @param string $UserId 签署人userId，仅支持本企业的员工userid， 可在控制台组织管理处获得
+
+若传此字段 则以userid的信息为主，会覆盖传递过来的签署人基本信息， 包括姓名，手机号，证件类型等信息
+     * @param string $ApproverSource 签署人用户来源，此参数仅针对企微用户开放
+
+企微侧用户请传入：WEWORKAPP
+     * @param string $CustomApproverTag 企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
      * @param ApproverOption $ApproverOption 签署人个性化能力值
      * @param array $ApproverVerifyTypes 签署人查看合同时认证方式, 
 1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
 如果不传默认为1
+模板发起的时候,认证方式以模板配置为主
      * @param array $ApproverSignTypes 签署人签署合同时的认证方式
 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 合同签署认证方式的优先级 verifyChannel>approverSignTypes
+模板发起的时候,认证方式以模板配置为主
+     * @param boolean $ApproverNeedSignReview 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
      */
     function __construct()
     {
@@ -230,6 +282,10 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
             $this->ApproverMobile = $param["ApproverMobile"];
         }
 
+        if (array_key_exists("OrganizationName",$param) and $param["OrganizationName"] !== null) {
+            $this->OrganizationName = $param["OrganizationName"];
+        }
+
         if (array_key_exists("SignComponents",$param) and $param["SignComponents"] !== null) {
             $this->SignComponents = [];
             foreach ($param["SignComponents"] as $key => $value){
@@ -239,16 +295,12 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
             }
         }
 
-        if (array_key_exists("OrganizationName",$param) and $param["OrganizationName"] !== null) {
-            $this->OrganizationName = $param["OrganizationName"];
+        if (array_key_exists("ApproverIdCardType",$param) and $param["ApproverIdCardType"] !== null) {
+            $this->ApproverIdCardType = $param["ApproverIdCardType"];
         }
 
         if (array_key_exists("ApproverIdCardNumber",$param) and $param["ApproverIdCardNumber"] !== null) {
             $this->ApproverIdCardNumber = $param["ApproverIdCardNumber"];
-        }
-
-        if (array_key_exists("ApproverIdCardType",$param) and $param["ApproverIdCardType"] !== null) {
-            $this->ApproverIdCardType = $param["ApproverIdCardType"];
         }
 
         if (array_key_exists("NotifyType",$param) and $param["NotifyType"] !== null) {
@@ -290,6 +342,10 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
 
         if (array_key_exists("ApproverSignTypes",$param) and $param["ApproverSignTypes"] !== null) {
             $this->ApproverSignTypes = $param["ApproverSignTypes"];
+        }
+
+        if (array_key_exists("ApproverNeedSignReview",$param) and $param["ApproverNeedSignReview"] !== null) {
+            $this->ApproverNeedSignReview = $param["ApproverNeedSignReview"];
         }
     }
 }

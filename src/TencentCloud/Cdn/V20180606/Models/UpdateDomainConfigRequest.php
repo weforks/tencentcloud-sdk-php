@@ -42,8 +42,8 @@ use TencentCloud\Common\AbstractModel;
  * @method void setFollowRedirect(FollowRedirect $FollowRedirect) 设置301/302 回源跟随配置
  * @method ErrorPage getErrorPage() 获取错误码重定向配置（功能灰度中，尚未全量）
  * @method void setErrorPage(ErrorPage $ErrorPage) 设置错误码重定向配置（功能灰度中，尚未全量）
- * @method RequestHeader getRequestHeader() 获取请求头部配置
- * @method void setRequestHeader(RequestHeader $RequestHeader) 设置请求头部配置
+ * @method RequestHeader getRequestHeader() 获取回源请求头部配置
+ * @method void setRequestHeader(RequestHeader $RequestHeader) 设置回源请求头部配置
  * @method ResponseHeader getResponseHeader() 获取响应头部配置
  * @method void setResponseHeader(ResponseHeader $ResponseHeader) 设置响应头部配置
  * @method DownstreamCapping getDownstreamCapping() 获取下载速度配置
@@ -130,8 +130,10 @@ global：全球加速
  * @method void setHwPrivateAccess(HwPrivateAccess $HwPrivateAccess) 设置华为云对象存储回源鉴权
  * @method QnPrivateAccess getQnPrivateAccess() 获取七牛云对象存储回源鉴权
  * @method void setQnPrivateAccess(QnPrivateAccess $QnPrivateAccess) 设置七牛云对象存储回源鉴权
- * @method HttpsBilling getHttpsBilling() 获取HTTPS服务
- * @method void setHttpsBilling(HttpsBilling $HttpsBilling) 设置HTTPS服务
+ * @method OthersPrivateAccess getOthersPrivateAccess() 获取其他厂商对象存储回源鉴权
+ * @method void setOthersPrivateAccess(OthersPrivateAccess $OthersPrivateAccess) 设置其他厂商对象存储回源鉴权
+ * @method HttpsBilling getHttpsBilling() 获取HTTPS服务（收费服务，详见计费说明和产品文档）
+ * @method void setHttpsBilling(HttpsBilling $HttpsBilling) 设置HTTPS服务（收费服务，详见计费说明和产品文档）
  */
 class UpdateDomainConfigRequest extends AbstractModel
 {
@@ -191,7 +193,7 @@ class UpdateDomainConfigRequest extends AbstractModel
     public $ErrorPage;
 
     /**
-     * @var RequestHeader 请求头部配置
+     * @var RequestHeader 回源请求头部配置
      */
     public $RequestHeader;
 
@@ -379,7 +381,12 @@ global：全球加速
     public $QnPrivateAccess;
 
     /**
-     * @var HttpsBilling HTTPS服务
+     * @var OthersPrivateAccess 其他厂商对象存储回源鉴权
+     */
+    public $OthersPrivateAccess;
+
+    /**
+     * @var HttpsBilling HTTPS服务（收费服务，详见计费说明和产品文档）
      */
     public $HttpsBilling;
 
@@ -395,7 +402,7 @@ global：全球加速
      * @param RangeOriginPull $RangeOriginPull Range 回源配置
      * @param FollowRedirect $FollowRedirect 301/302 回源跟随配置
      * @param ErrorPage $ErrorPage 错误码重定向配置（功能灰度中，尚未全量）
-     * @param RequestHeader $RequestHeader 请求头部配置
+     * @param RequestHeader $RequestHeader 回源请求头部配置
      * @param ResponseHeader $ResponseHeader 响应头部配置
      * @param DownstreamCapping $DownstreamCapping 下载速度配置
      * @param CacheKey $CacheKey 节点缓存键配置
@@ -439,7 +446,8 @@ global：全球加速
      * @param ShareCname $ShareCname 共享CNAME配置，白名单功能
      * @param HwPrivateAccess $HwPrivateAccess 华为云对象存储回源鉴权
      * @param QnPrivateAccess $QnPrivateAccess 七牛云对象存储回源鉴权
-     * @param HttpsBilling $HttpsBilling HTTPS服务
+     * @param OthersPrivateAccess $OthersPrivateAccess 其他厂商对象存储回源鉴权
+     * @param HttpsBilling $HttpsBilling HTTPS服务（收费服务，详见计费说明和产品文档）
      */
     function __construct()
     {
@@ -682,6 +690,11 @@ global：全球加速
         if (array_key_exists("QnPrivateAccess",$param) and $param["QnPrivateAccess"] !== null) {
             $this->QnPrivateAccess = new QnPrivateAccess();
             $this->QnPrivateAccess->deserialize($param["QnPrivateAccess"]);
+        }
+
+        if (array_key_exists("OthersPrivateAccess",$param) and $param["OthersPrivateAccess"] !== null) {
+            $this->OthersPrivateAccess = new OthersPrivateAccess();
+            $this->OthersPrivateAccess->deserialize($param["OthersPrivateAccess"]);
         }
 
         if (array_key_exists("HttpsBilling",$param) and $param["HttpsBilling"] !== null) {

@@ -112,6 +112,18 @@ use TencentCloud\Common\AbstractModel;
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setStatus(integer $Status) 设置规则状态，查询规则命中详情时该字段有效，0：新增，1: 已删除, 2: 编辑删除
 注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getBetaList() 获取关联任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setBetaList(array $BetaList) 设置关联任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getScope() 获取生效范围：serial，串行；side，旁路；all，全局
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setScope(string $Scope) 设置生效范围：serial，串行；side，旁路；all，全局
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getInternetBorderUuid() 获取互联网边界防火墙使用的内部规则id
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setInternetBorderUuid(string $InternetBorderUuid) 设置互联网边界防火墙使用的内部规则id
+注意：此字段可能返回 null，表示取不到有效值。
  */
 class DescAcItem extends AbstractModel
 {
@@ -258,6 +270,24 @@ class DescAcItem extends AbstractModel
     public $Status;
 
     /**
+     * @var array 关联任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $BetaList;
+
+    /**
+     * @var string 生效范围：serial，串行；side，旁路；all，全局
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $Scope;
+
+    /**
+     * @var string 互联网边界防火墙使用的内部规则id
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $InternetBorderUuid;
+
+    /**
      * @param string $SourceContent 访问源
 注意：此字段可能返回 null，表示取不到有效值。
      * @param string $TargetContent 访问目的
@@ -303,6 +333,12 @@ class DescAcItem extends AbstractModel
      * @param integer $InternalUuid 内部使用的uuid，一般情况下不会使用到该字段
 注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $Status 规则状态，查询规则命中详情时该字段有效，0：新增，1: 已删除, 2: 编辑删除
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $BetaList 关联任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $Scope 生效范围：serial，串行；side，旁路；all，全局
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $InternetBorderUuid 互联网边界防火墙使用的内部规则id
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -412,6 +448,23 @@ class DescAcItem extends AbstractModel
 
         if (array_key_exists("Status",$param) and $param["Status"] !== null) {
             $this->Status = $param["Status"];
+        }
+
+        if (array_key_exists("BetaList",$param) and $param["BetaList"] !== null) {
+            $this->BetaList = [];
+            foreach ($param["BetaList"] as $key => $value){
+                $obj = new BetaInfoByACL();
+                $obj->deserialize($value);
+                array_push($this->BetaList, $obj);
+            }
+        }
+
+        if (array_key_exists("Scope",$param) and $param["Scope"] !== null) {
+            $this->Scope = $param["Scope"];
+        }
+
+        if (array_key_exists("InternetBorderUuid",$param) and $param["InternetBorderUuid"] !== null) {
+            $this->InternetBorderUuid = $param["InternetBorderUuid"];
         }
     }
 }

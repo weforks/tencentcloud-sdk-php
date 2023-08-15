@@ -40,8 +40,10 @@ use TencentCloud\Tsf\V20180326\Models as Models;
  * @method Models\CreateConfigResponse CreateConfig(Models\CreateConfigRequest $req) 创建配置项
  * @method Models\CreateConfigTemplateResponse CreateConfigTemplate(Models\CreateConfigTemplateRequest $req) 创建参数模板
  * @method Models\CreateConfigTemplateWithDetailRespResponse CreateConfigTemplateWithDetailResp(Models\CreateConfigTemplateWithDetailRespRequest $req) 创建参数模板,并返回模版详细信息
+ * @method Models\CreateConfigWithDetailRespResponse CreateConfigWithDetailResp(Models\CreateConfigWithDetailRespRequest $req) 创建配置项，返回详细信息
  * @method Models\CreateContainGroupResponse CreateContainGroup(Models\CreateContainGroupRequest $req) （已废弃，请使用 CreateGroup 和 DeployContainerGroup 创建和部署容器部署组）创建容器部署组
  * @method Models\CreateFileConfigResponse CreateFileConfig(Models\CreateFileConfigRequest $req) 创建文件配置项
+ * @method Models\CreateFileConfigWithDetailRespResponse CreateFileConfigWithDetailResp(Models\CreateFileConfigWithDetailRespRequest $req) 创建文件配置项，返回详细信息
  * @method Models\CreateGatewayApiResponse CreateGatewayApi(Models\CreateGatewayApiRequest $req) 批量导入API至api分组(也支持新建API到分组)
  * @method Models\CreateGroupResponse CreateGroup(Models\CreateGroupRequest $req) 创建虚拟机部署组
  * @method Models\CreateLaneResponse CreateLane(Models\CreateLaneRequest $req) 创建泳道
@@ -56,6 +58,7 @@ use TencentCloud\Tsf\V20180326\Models as Models;
  * @method Models\CreateRepositoryResponse CreateRepository(Models\CreateRepositoryRequest $req) 创建仓库
  * @method Models\CreateTaskResponse CreateTask(Models\CreateTaskRequest $req) 创建任务
  * @method Models\CreateTaskFlowResponse CreateTaskFlow(Models\CreateTaskFlowRequest $req) 创建工作流
+ * @method Models\CreateUnitNamespacesResponse CreateUnitNamespaces(Models\CreateUnitNamespacesRequest $req) 批量创建单元化命名空间
  * @method Models\CreateUnitRuleResponse CreateUnitRule(Models\CreateUnitRuleRequest $req) 创建单元化规则
  * @method Models\CreateUnitRuleWithDetailRespResponse CreateUnitRuleWithDetailResp(Models\CreateUnitRuleWithDetailRespRequest $req) 创建单元化规则, 并返回详细信息
  * @method Models\DeleteApiGroupResponse DeleteApiGroup(Models\DeleteApiGroupRequest $req) 删除Api分组
@@ -66,6 +69,7 @@ use TencentCloud\Tsf\V20180326\Models as Models;
  * @method Models\DeleteConfigTemplateResponse DeleteConfigTemplate(Models\DeleteConfigTemplateRequest $req) 删除模板
  * @method Models\DeleteContainerGroupResponse DeleteContainerGroup(Models\DeleteContainerGroupRequest $req) 删除容器部署组
  * @method Models\DeleteFileConfigResponse DeleteFileConfig(Models\DeleteFileConfigRequest $req) 删除文件配置项
+ * @method Models\DeleteGatewayApiResponse DeleteGatewayApi(Models\DeleteGatewayApiRequest $req) 批量删除API
  * @method Models\DeleteGroupResponse DeleteGroup(Models\DeleteGroupRequest $req) 删除容器部署组
  * @method Models\DeleteImageTagsResponse DeleteImageTags(Models\DeleteImageTagsRequest $req) 批量删除镜像版本
  * @method Models\DeleteLaneResponse DeleteLane(Models\DeleteLaneRequest $req) 删除泳道
@@ -105,6 +109,7 @@ use TencentCloud\Tsf\V20180326\Models as Models;
  * @method Models\DescribeConfigTemplateResponse DescribeConfigTemplate(Models\DescribeConfigTemplateRequest $req) 导入配置
  * @method Models\DescribeConfigsResponse DescribeConfigs(Models\DescribeConfigsRequest $req) 查询配置项列表
  * @method Models\DescribeContainerEventsResponse DescribeContainerEvents(Models\DescribeContainerEventsRequest $req) 获取容器事件列表
+ * @method Models\DescribeContainerGroupAttributeResponse DescribeContainerGroupAttribute(Models\DescribeContainerGroupAttributeRequest $req) 获取部署组其他字段-用于前端并发调用
  * @method Models\DescribeContainerGroupDeployInfoResponse DescribeContainerGroupDeployInfo(Models\DescribeContainerGroupDeployInfoRequest $req)  获取部署组详情
  * @method Models\DescribeContainerGroupDetailResponse DescribeContainerGroupDetail(Models\DescribeContainerGroupDetailRequest $req)  容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
  * @method Models\DescribeContainerGroupsResponse DescribeContainerGroups(Models\DescribeContainerGroupsRequest $req) 容器部署组列表
@@ -133,7 +138,7 @@ COS相关文档请查阅：https://cloud.tencent.com/document/product/436
  * @method Models\DescribeGroupsWithPluginResponse DescribeGroupsWithPlugin(Models\DescribeGroupsWithPluginRequest $req) 查询某个插件下绑定或未绑定的API分组
  * @method Models\DescribeImageRepositoryResponse DescribeImageRepository(Models\DescribeImageRepositoryRequest $req) 镜像仓库列表 
  * @method Models\DescribeImageTagsResponse DescribeImageTags(Models\DescribeImageTagsRequest $req) 镜像版本列表
- * @method Models\DescribeInovcationIndicatorsResponse DescribeInovcationIndicators(Models\DescribeInovcationIndicatorsRequest $req) 查询调用监控指标
+ * @method Models\DescribeInovcationIndicatorsResponse DescribeInovcationIndicators(Models\DescribeInovcationIndicatorsRequest $req) 废弃
  * @method Models\DescribeInstancesResponse DescribeInstances(Models\DescribeInstancesRequest $req) 无
  * @method Models\DescribeInvocationMetricDataCurveResponse DescribeInvocationMetricDataCurve(Models\DescribeInvocationMetricDataCurveRequest $req) 查询调用指标数据变化曲线
  * @method Models\DescribeInvocationMetricDataDimensionResponse DescribeInvocationMetricDataDimension(Models\DescribeInvocationMetricDataDimensionRequest $req) 查询维度
@@ -173,6 +178,7 @@ COS相关文档请查阅：https://cloud.tencent.com/document/product/436
  * @method Models\DescribeUnitNamespacesResponse DescribeUnitNamespaces(Models\DescribeUnitNamespacesRequest $req) 查询单元化命名空间列表
  * @method Models\DescribeUnitRuleResponse DescribeUnitRule(Models\DescribeUnitRuleRequest $req) 查询单元化规则详情
  * @method Models\DescribeUnitRulesResponse DescribeUnitRules(Models\DescribeUnitRulesRequest $req) 查询单元化规则列表
+ * @method Models\DescribeUnitRulesV2Response DescribeUnitRulesV2(Models\DescribeUnitRulesV2Request $req) 查询单元化规则列表V2
  * @method Models\DescribeUploadInfoResponse DescribeUploadInfo(Models\DescribeUploadInfoRequest $req) TSF会将软件包上传到腾讯云对象存储（COS）。调用此接口获取上传信息，如目标地域，桶，包Id，存储路径，鉴权信息等，之后请使用COS API（或SDK）进行上传。
 COS相关文档请查阅：https://cloud.tencent.com/document/product/436
  * @method Models\DescribeUsableUnitNamespacesResponse DescribeUsableUnitNamespaces(Models\DescribeUsableUnitNamespacesRequest $req) 查询可用于被导入的命名空间列表

@@ -24,12 +24,14 @@ use TencentCloud\Common\AbstractModel;
  * @method void setClusterId(string $ClusterId) 设置集群ID
  * @method string getNamespaceId() 获取命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
  * @method void setNamespaceId(string $NamespaceId) 设置命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
- * @method integer getTtl() 获取未消费消息的保留时间，以毫秒为单位，60秒-15天
- * @method void setTtl(integer $Ttl) 设置未消费消息的保留时间，以毫秒为单位，60秒-15天
- * @method integer getRetentionTime() 获取消息持久化后保留的时间，以毫秒为单位
- * @method void setRetentionTime(integer $RetentionTime) 设置消息持久化后保留的时间，以毫秒为单位
+ * @method integer getTtl() 获取已废弃
+ * @method void setTtl(integer $Ttl) 设置已废弃
+ * @method integer getRetentionTime() 获取已废弃
+ * @method void setRetentionTime(integer $RetentionTime) 设置已废弃
  * @method string getRemark() 获取说明，最大128个字符
  * @method void setRemark(string $Remark) 设置说明，最大128个字符
+ * @method boolean getPublicAccessEnabled() 获取是否开启公网访问
+ * @method void setPublicAccessEnabled(boolean $PublicAccessEnabled) 设置是否开启公网访问
  */
 class ModifyRocketMQNamespaceRequest extends AbstractModel
 {
@@ -44,12 +46,12 @@ class ModifyRocketMQNamespaceRequest extends AbstractModel
     public $NamespaceId;
 
     /**
-     * @var integer 未消费消息的保留时间，以毫秒为单位，60秒-15天
+     * @var integer 已废弃
      */
     public $Ttl;
 
     /**
-     * @var integer 消息持久化后保留的时间，以毫秒为单位
+     * @var integer 已废弃
      */
     public $RetentionTime;
 
@@ -59,11 +61,17 @@ class ModifyRocketMQNamespaceRequest extends AbstractModel
     public $Remark;
 
     /**
+     * @var boolean 是否开启公网访问
+     */
+    public $PublicAccessEnabled;
+
+    /**
      * @param string $ClusterId 集群ID
      * @param string $NamespaceId 命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
-     * @param integer $Ttl 未消费消息的保留时间，以毫秒为单位，60秒-15天
-     * @param integer $RetentionTime 消息持久化后保留的时间，以毫秒为单位
+     * @param integer $Ttl 已废弃
+     * @param integer $RetentionTime 已废弃
      * @param string $Remark 说明，最大128个字符
+     * @param boolean $PublicAccessEnabled 是否开启公网访问
      */
     function __construct()
     {
@@ -96,6 +104,10 @@ class ModifyRocketMQNamespaceRequest extends AbstractModel
 
         if (array_key_exists("Remark",$param) and $param["Remark"] !== null) {
             $this->Remark = $param["Remark"];
+        }
+
+        if (array_key_exists("PublicAccessEnabled",$param) and $param["PublicAccessEnabled"] !== null) {
+            $this->PublicAccessEnabled = $param["PublicAccessEnabled"];
         }
     }
 }

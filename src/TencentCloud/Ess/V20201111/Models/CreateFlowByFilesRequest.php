@@ -50,6 +50,8 @@ use TencentCloud\Common\AbstractModel;
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
  * @method void setDeadline(integer $Deadline) 设置签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
+ * @method integer getRemindedOn() 获取合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
+ * @method void setRemindedOn(integer $RemindedOn) 设置合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
  * @method boolean getUnordered() 获取发送类型：
 true：无序签
 false：有序签
@@ -86,6 +88,8 @@ MobileCheck：手机号验证
  * @method void setAgent(Agent $Agent) 设置代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
  * @method integer getCcNotifyType() 获取给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
  * @method void setCcNotifyType(integer $CcNotifyType) 设置给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+ * @method string getAutoSignScene() 获取个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+ * @method void setAutoSignScene(string $AutoSignScene) 设置个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
  */
 class CreateFlowByFilesRequest extends AbstractModel
 {
@@ -145,6 +149,11 @@ class CreateFlowByFilesRequest extends AbstractModel
     public $Deadline;
 
     /**
+     * @var integer 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
+     */
+    public $RemindedOn;
+
+    /**
      * @var boolean 发送类型：
 true：无序签
 false：有序签
@@ -199,6 +208,11 @@ MobileCheck：手机号验证
     public $CcNotifyType;
 
     /**
+     * @var string 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+     */
+    public $AutoSignScene;
+
+    /**
      * @param UserInfo $Operator 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
      * @param string $FlowName 签署流程名称,最大长度200个字符
      * @param array $Approvers 签署参与者信息，最大限制50方
@@ -214,6 +228,7 @@ MobileCheck：手机号验证
      * @param integer $PreviewType 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
      * @param integer $Deadline 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
+     * @param integer $RemindedOn 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
      * @param boolean $Unordered 发送类型：
 true：无序签
 false：有序签
@@ -232,6 +247,7 @@ MobileCheck：手机号验证
      * @param integer $SignBeanTag 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
      * @param Agent $Agent 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
      * @param integer $CcNotifyType 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+     * @param string $AutoSignScene 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
      */
     function __construct()
     {
@@ -302,6 +318,10 @@ MobileCheck：手机号验证
             $this->Deadline = $param["Deadline"];
         }
 
+        if (array_key_exists("RemindedOn",$param) and $param["RemindedOn"] !== null) {
+            $this->RemindedOn = $param["RemindedOn"];
+        }
+
         if (array_key_exists("Unordered",$param) and $param["Unordered"] !== null) {
             $this->Unordered = $param["Unordered"];
         }
@@ -337,6 +357,10 @@ MobileCheck：手机号验证
 
         if (array_key_exists("CcNotifyType",$param) and $param["CcNotifyType"] !== null) {
             $this->CcNotifyType = $param["CcNotifyType"];
+        }
+
+        if (array_key_exists("AutoSignScene",$param) and $param["AutoSignScene"] !== null) {
+            $this->AutoSignScene = $param["AutoSignScene"];
         }
     }
 }

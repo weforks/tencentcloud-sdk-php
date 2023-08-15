@@ -40,10 +40,12 @@ use TencentCloud\Common\AbstractModel;
 <li> deactivated：被封禁。 </li>
  * @method string getType() 获取站点接入方式，取值有
 <li> full：NS 接入； </li>
-<li> partial：CNAME 接入。</li>
+<li> partial：CNAME 接入；</li>
+<li> noDomainAccess：无域名接入。</li>
  * @method void setType(string $Type) 设置站点接入方式，取值有
 <li> full：NS 接入； </li>
-<li> partial：CNAME 接入。</li>
+<li> partial：CNAME 接入；</li>
+<li> noDomainAccess：无域名接入。</li>
  * @method boolean getPaused() 获取站点是否关闭。
  * @method void setPaused(boolean $Paused) 设置站点是否关闭。
  * @method string getCnameSpeedUp() 获取是否开启 CNAME 加速，取值有：
@@ -97,11 +99,11 @@ use TencentCloud\Common\AbstractModel;
  * @method integer getIsFake() 获取是否伪站点，取值有：
 <li> 0：非伪站点；</li>
 <li> 1：伪站点。</li>
-注意：此字段可能返回 null，表示取不到有效值。
  * @method void setIsFake(integer $IsFake) 设置是否伪站点，取值有：
 <li> 0：非伪站点；</li>
 <li> 1：伪站点。</li>
-注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getLockStatus() 获取锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作。</li>
+ * @method void setLockStatus(string $LockStatus) 设置锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作。</li>
  */
 class Zone extends AbstractModel
 {
@@ -137,7 +139,8 @@ class Zone extends AbstractModel
     /**
      * @var string 站点接入方式，取值有
 <li> full：NS 接入； </li>
-<li> partial：CNAME 接入。</li>
+<li> partial：CNAME 接入；</li>
+<li> noDomainAccess：无域名接入。</li>
      */
     public $Type;
 
@@ -218,9 +221,13 @@ class Zone extends AbstractModel
      * @var integer 是否伪站点，取值有：
 <li> 0：非伪站点；</li>
 <li> 1：伪站点。</li>
-注意：此字段可能返回 null，表示取不到有效值。
      */
     public $IsFake;
+
+    /**
+     * @var string 锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作。</li>
+     */
+    public $LockStatus;
 
     /**
      * @param string $ZoneId 站点ID。
@@ -234,7 +241,8 @@ class Zone extends AbstractModel
 <li> deactivated：被封禁。 </li>
      * @param string $Type 站点接入方式，取值有
 <li> full：NS 接入； </li>
-<li> partial：CNAME 接入。</li>
+<li> partial：CNAME 接入；</li>
+<li> noDomainAccess：无域名接入。</li>
      * @param boolean $Paused 站点是否关闭。
      * @param string $CnameSpeedUp 是否开启 CNAME 加速，取值有：
 <li> enabled：开启；</li>
@@ -263,7 +271,7 @@ class Zone extends AbstractModel
      * @param integer $IsFake 是否伪站点，取值有：
 <li> 0：非伪站点；</li>
 <li> 1：伪站点。</li>
-注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $LockStatus 锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作。</li>
      */
     function __construct()
     {
@@ -368,6 +376,10 @@ class Zone extends AbstractModel
 
         if (array_key_exists("IsFake",$param) and $param["IsFake"] !== null) {
             $this->IsFake = $param["IsFake"];
+        }
+
+        if (array_key_exists("LockStatus",$param) and $param["LockStatus"] !== null) {
+            $this->LockStatus = $param["LockStatus"];
         }
     }
 }

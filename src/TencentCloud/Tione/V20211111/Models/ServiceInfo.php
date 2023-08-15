@@ -106,9 +106,39 @@ HYBRID_PAID:
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setModelHotUpdateEnable(boolean $ModelHotUpdateEnable) 设置是否开启模型的热更新。默认不开启
 注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getScaleMode() 获取实例数量调节方式,默认为手动
+支持：自动 - "AUTO", 手动 - "MANUAL"
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setScaleMode(string $ScaleMode) 设置实例数量调节方式,默认为手动
+支持：自动 - "AUTO", 手动 - "MANUAL"
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getCronScaleJobs() 获取定时伸缩任务
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setCronScaleJobs(array $CronScaleJobs) 设置定时伸缩任务
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getScaleStrategy() 获取定时伸缩策略
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setScaleStrategy(string $ScaleStrategy) 设置定时伸缩策略
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getScheduledAction() 获取定时停止的配置
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setScheduledAction(string $ScheduledAction) 设置定时停止的配置
+注意：此字段可能返回 null，表示取不到有效值。
  * @method Pod getPods() 获取Pod列表信息
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setPods(Pod $Pods) 设置Pod列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getPodInfos() 获取Pod列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setPodInfos(array $PodInfos) 设置Pod列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method ServiceLimit getServiceLimit() 获取服务限速限流相关配置
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setServiceLimit(ServiceLimit $ServiceLimit) 设置服务限速限流相关配置
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method boolean getModelTurboEnable() 获取是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setModelTurboEnable(boolean $ModelTurboEnable) 设置是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
 注意：此字段可能返回 null，表示取不到有效值。
  */
 class ServiceInfo extends AbstractModel
@@ -229,10 +259,53 @@ HYBRID_PAID:
     public $ModelHotUpdateEnable;
 
     /**
+     * @var string 实例数量调节方式,默认为手动
+支持：自动 - "AUTO", 手动 - "MANUAL"
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $ScaleMode;
+
+    /**
+     * @var array 定时伸缩任务
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $CronScaleJobs;
+
+    /**
+     * @var string 定时伸缩策略
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $ScaleStrategy;
+
+    /**
+     * @var string 定时停止的配置
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $ScheduledAction;
+
+    /**
      * @var Pod Pod列表信息
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $Pods;
+
+    /**
+     * @var array Pod列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $PodInfos;
+
+    /**
+     * @var ServiceLimit 服务限速限流相关配置
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $ServiceLimit;
+
+    /**
+     * @var boolean 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $ModelTurboEnable;
 
     /**
      * @param integer $Replicas 期望运行的Pod数量，停止状态是0
@@ -278,7 +351,22 @@ HYBRID_PAID:
 注意：此字段可能返回 null，表示取不到有效值。
      * @param boolean $ModelHotUpdateEnable 是否开启模型的热更新。默认不开启
 注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $ScaleMode 实例数量调节方式,默认为手动
+支持：自动 - "AUTO", 手动 - "MANUAL"
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $CronScaleJobs 定时伸缩任务
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $ScaleStrategy 定时伸缩策略
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $ScheduledAction 定时停止的配置
+注意：此字段可能返回 null，表示取不到有效值。
      * @param Pod $Pods Pod列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $PodInfos Pod列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param ServiceLimit $ServiceLimit 服务限速限流相关配置
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param boolean $ModelTurboEnable 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -378,9 +466,48 @@ HYBRID_PAID:
             $this->ModelHotUpdateEnable = $param["ModelHotUpdateEnable"];
         }
 
+        if (array_key_exists("ScaleMode",$param) and $param["ScaleMode"] !== null) {
+            $this->ScaleMode = $param["ScaleMode"];
+        }
+
+        if (array_key_exists("CronScaleJobs",$param) and $param["CronScaleJobs"] !== null) {
+            $this->CronScaleJobs = [];
+            foreach ($param["CronScaleJobs"] as $key => $value){
+                $obj = new CronScaleJob();
+                $obj->deserialize($value);
+                array_push($this->CronScaleJobs, $obj);
+            }
+        }
+
+        if (array_key_exists("ScaleStrategy",$param) and $param["ScaleStrategy"] !== null) {
+            $this->ScaleStrategy = $param["ScaleStrategy"];
+        }
+
+        if (array_key_exists("ScheduledAction",$param) and $param["ScheduledAction"] !== null) {
+            $this->ScheduledAction = $param["ScheduledAction"];
+        }
+
         if (array_key_exists("Pods",$param) and $param["Pods"] !== null) {
             $this->Pods = new Pod();
             $this->Pods->deserialize($param["Pods"]);
+        }
+
+        if (array_key_exists("PodInfos",$param) and $param["PodInfos"] !== null) {
+            $this->PodInfos = [];
+            foreach ($param["PodInfos"] as $key => $value){
+                $obj = new Pod();
+                $obj->deserialize($value);
+                array_push($this->PodInfos, $obj);
+            }
+        }
+
+        if (array_key_exists("ServiceLimit",$param) and $param["ServiceLimit"] !== null) {
+            $this->ServiceLimit = new ServiceLimit();
+            $this->ServiceLimit->deserialize($param["ServiceLimit"]);
+        }
+
+        if (array_key_exists("ModelTurboEnable",$param) and $param["ModelTurboEnable"] !== null) {
+            $this->ModelTurboEnable = $param["ModelTurboEnable"];
         }
     }
 }

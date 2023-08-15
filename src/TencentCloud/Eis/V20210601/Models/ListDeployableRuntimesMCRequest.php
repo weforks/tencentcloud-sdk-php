@@ -20,14 +20,42 @@ use TencentCloud\Common\AbstractModel;
 /**
  * ListDeployableRuntimesMC请求参数结构体
  *
-
+ * @method integer getProjectId() 获取应用id
+ * @method void setProjectId(integer $ProjectId) 设置应用id
+ * @method integer getInstanceId() 获取实例id
+ * @method void setInstanceId(integer $InstanceId) 设置实例id
+ * @method integer getPlanType() 获取版本类型 0-pro 1-lite
+ * @method void setPlanType(integer $PlanType) 设置版本类型 0-pro 1-lite
+ * @method integer getRuntimeClass() 获取0：应用集成，1：API，2：ETL
+ * @method void setRuntimeClass(integer $RuntimeClass) 设置0：应用集成，1：API，2：ETL
  */
 class ListDeployableRuntimesMCRequest extends AbstractModel
 {
-
+    /**
+     * @var integer 应用id
+     */
+    public $ProjectId;
 
     /**
+     * @var integer 实例id
+     */
+    public $InstanceId;
 
+    /**
+     * @var integer 版本类型 0-pro 1-lite
+     */
+    public $PlanType;
+
+    /**
+     * @var integer 0：应用集成，1：API，2：ETL
+     */
+    public $RuntimeClass;
+
+    /**
+     * @param integer $ProjectId 应用id
+     * @param integer $InstanceId 实例id
+     * @param integer $PlanType 版本类型 0-pro 1-lite
+     * @param integer $RuntimeClass 0：应用集成，1：API，2：ETL
      */
     function __construct()
     {
@@ -42,6 +70,20 @@ class ListDeployableRuntimesMCRequest extends AbstractModel
         if ($param === null) {
             return;
         }
+        if (array_key_exists("ProjectId",$param) and $param["ProjectId"] !== null) {
+            $this->ProjectId = $param["ProjectId"];
+        }
 
+        if (array_key_exists("InstanceId",$param) and $param["InstanceId"] !== null) {
+            $this->InstanceId = $param["InstanceId"];
+        }
+
+        if (array_key_exists("PlanType",$param) and $param["PlanType"] !== null) {
+            $this->PlanType = $param["PlanType"];
+        }
+
+        if (array_key_exists("RuntimeClass",$param) and $param["RuntimeClass"] !== null) {
+            $this->RuntimeClass = $param["RuntimeClass"];
+        }
     }
 }

@@ -32,6 +32,7 @@ use TencentCloud\Cpdp\V20190820\Models as Models;
  * @method Models\ApplyApplicationMaterialResponse ApplyApplicationMaterial(Models\ApplyApplicationMaterialRequest $req) 跨境-提交申报材料。申报材料的主体是付款人，需要提前调用【跨境-付款人申请】接口提交付款人信息且审核通过后调用。
  * @method Models\ApplyFlexPaymentResponse ApplyFlexPayment(Models\ApplyFlexPaymentRequest $req) 灵云V2-付款
  * @method Models\ApplyFlexSettlementResponse ApplyFlexSettlement(Models\ApplyFlexSettlementRequest $req) 灵云V2-结算
+ * @method Models\ApplyFlexWechatPreAuthResponse ApplyFlexWechatPreAuth(Models\ApplyFlexWechatPreAuthRequest $req) 微工卡开通预核身接口
  * @method Models\ApplyOpenBankOrderDetailReceiptResponse ApplyOpenBankOrderDetailReceipt(Models\ApplyOpenBankOrderDetailReceiptRequest $req) 云企付-申请单笔交易回单
  * @method Models\ApplyOpenBankSettleOrderResponse ApplyOpenBankSettleOrder(Models\ApplyOpenBankSettleOrderRequest $req) 云企付-结算申请接口
  * @method Models\ApplyOpenBankSubMerchantSignOnlineResponse ApplyOpenBankSubMerchantSignOnline(Models\ApplyOpenBankSubMerchantSignOnlineRequest $req) 子商户在线签约
@@ -118,7 +119,7 @@ use TencentCloud\Cpdp\V20190820\Models as Models;
  * @method Models\GetPayRollAuthResponse GetPayRollAuth(Models\GetPayRollAuthRequest $req) 务工卡-查询授权关系
  * @method Models\GetPayRollAuthListResponse GetPayRollAuthList(Models\GetPayRollAuthListRequest $req) 务工卡-查询核身记录
  * @method Models\GetPayRollAuthResultResponse GetPayRollAuthResult(Models\GetPayRollAuthResultRequest $req) 务工卡-获取核身结果
- * @method Models\MigrateOrderRefundResponse MigrateOrderRefund(Models\MigrateOrderRefundRequest $req) 山姆聚合支付项目-存量订单退款接口。可以通过本接口将支付款全部或部分退还给付款方，在收到用户退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。
+ * @method Models\MigrateOrderRefundResponse MigrateOrderRefund(Models\MigrateOrderRefundRequest $req) 山姆聚合支付项目-存量订单退款接口。可以通过本接口将支付款全部或部分退还给付款方，在收到用户退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付账号。
  * @method Models\MigrateOrderRefundQueryResponse MigrateOrderRefundQuery(Models\MigrateOrderRefundQueryRequest $req) 提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时。
  * @method Models\ModifyAgentTaxPaymentInfoResponse ModifyAgentTaxPaymentInfo(Models\ModifyAgentTaxPaymentInfoRequest $req) 直播平台-修改代理商完税信息
  * @method Models\ModifyBindedAccountResponse ModifyBindedAccount(Models\ModifyBindedAccountRequest $req) 灵云-重新绑定账号
@@ -168,6 +169,7 @@ use TencentCloud\Cpdp\V20190820\Models as Models;
  * @method Models\QueryFlexPlatformAccountBalanceResponse QueryFlexPlatformAccountBalance(Models\QueryFlexPlatformAccountBalanceRequest $req) 灵云V2-平台账户余额查询
  * @method Models\QueryFlexServiceProviderAccountBalanceResponse QueryFlexServiceProviderAccountBalance(Models\QueryFlexServiceProviderAccountBalanceRequest $req) 灵云V2-查询服务商账户余额
  * @method Models\QueryFlexSettlementOrderListResponse QueryFlexSettlementOrderList(Models\QueryFlexSettlementOrderListRequest $req) 灵云V2-查询结算订单列表
+ * @method Models\QueryFlexWechatAuthResultResponse QueryFlexWechatAuthResult(Models\QueryFlexWechatAuthResultRequest $req) 查询微工卡核身结果
  * @method Models\QueryFundsTransactionDetailsResponse QueryFundsTransactionDetails(Models\QueryFundsTransactionDetailsRequest $req) 聚鑫-查询会员资金交易信息列表
  * @method Models\QueryInvoiceResponse QueryInvoice(Models\QueryInvoiceRequest $req) 智慧零售-发票查询
  * @method Models\QueryInvoiceV2Response QueryInvoiceV2(Models\QueryInvoiceV2Request $req) 智慧零售-发票查询V2

@@ -22,8 +22,8 @@ use TencentCloud\Common\AbstractModel;
  *
  * @method string getInstanceId() 获取id
  * @method void setInstanceId(string $InstanceId) 设置id
- * @method string getInstanceName() 获取name
- * @method void setInstanceName(string $InstanceName) 设置name
+ * @method string getInstanceName() 获取Name
+ * @method void setInstanceName(string $InstanceName) 设置Name
  * @method string getResourceIds() 获取资源id
  * @method void setResourceIds(string $ResourceIds) 设置资源id
  * @method string getRegion() 获取地域
@@ -78,9 +78,31 @@ use TencentCloud\Common\AbstractModel;
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setAttackLogPost(integer $AttackLogPost) 设置攻击日志投递开关
 注意：此字段可能返回 null，表示取不到有效值。
- * @method integer getMaxBandwidth() 获取带宽峰值
+ * @method integer getMaxBandwidth() 获取带宽峰值，单位为B/s(字节每秒)
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setMaxBandwidth(integer $MaxBandwidth) 设置带宽峰值
+ * @method void setMaxBandwidth(integer $MaxBandwidth) 设置带宽峰值，单位为B/s(字节每秒)
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method integer getAPISecurity() 获取api安全是否购买
+ * @method void setAPISecurity(integer $APISecurity) 设置api安全是否购买
+ * @method integer getQpsStandard() 获取购买的qps规格
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setQpsStandard(integer $QpsStandard) 设置购买的qps规格
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method integer getBandwidthStandard() 获取购买的带宽规格
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setBandwidthStandard(integer $BandwidthStandard) 设置购买的带宽规格
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method integer getStatus() 获取实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setStatus(integer $Status) 设置实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method integer getSandboxQps() 获取实例沙箱值
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setSandboxQps(integer $SandboxQps) 设置实例沙箱值
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method integer getIsAPISecurityTrial() 获取是否api 安全试用
+注意：此字段可能返回 null，表示取不到有效值。
+ * @method void setIsAPISecurityTrial(integer $IsAPISecurityTrial) 设置是否api 安全试用
 注意：此字段可能返回 null，表示取不到有效值。
  */
 class InstanceInfo extends AbstractModel
@@ -91,7 +113,7 @@ class InstanceInfo extends AbstractModel
     public $InstanceId;
 
     /**
-     * @var string name
+     * @var string Name
      */
     public $InstanceName;
 
@@ -211,14 +233,49 @@ class InstanceInfo extends AbstractModel
     public $AttackLogPost;
 
     /**
-     * @var integer 带宽峰值
+     * @var integer 带宽峰值，单位为B/s(字节每秒)
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $MaxBandwidth;
 
     /**
+     * @var integer api安全是否购买
+     */
+    public $APISecurity;
+
+    /**
+     * @var integer 购买的qps规格
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $QpsStandard;
+
+    /**
+     * @var integer 购买的带宽规格
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $BandwidthStandard;
+
+    /**
+     * @var integer 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $Status;
+
+    /**
+     * @var integer 实例沙箱值
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $SandboxQps;
+
+    /**
+     * @var integer 是否api 安全试用
+注意：此字段可能返回 null，表示取不到有效值。
+     */
+    public $IsAPISecurityTrial;
+
+    /**
      * @param string $InstanceId id
-     * @param string $InstanceName name
+     * @param string $InstanceName Name
      * @param string $ResourceIds 资源id
      * @param string $Region 地域
      * @param integer $PayMode 付费模式
@@ -246,7 +303,18 @@ class InstanceInfo extends AbstractModel
 注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $AttackLogPost 攻击日志投递开关
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param integer $MaxBandwidth 带宽峰值
+     * @param integer $MaxBandwidth 带宽峰值，单位为B/s(字节每秒)
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param integer $APISecurity api安全是否购买
+     * @param integer $QpsStandard 购买的qps规格
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param integer $BandwidthStandard 购买的带宽规格
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param integer $Status 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param integer $SandboxQps 实例沙箱值
+注意：此字段可能返回 null，表示取不到有效值。
+     * @param integer $IsAPISecurityTrial 是否api 安全试用
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -365,6 +433,30 @@ class InstanceInfo extends AbstractModel
 
         if (array_key_exists("MaxBandwidth",$param) and $param["MaxBandwidth"] !== null) {
             $this->MaxBandwidth = $param["MaxBandwidth"];
+        }
+
+        if (array_key_exists("APISecurity",$param) and $param["APISecurity"] !== null) {
+            $this->APISecurity = $param["APISecurity"];
+        }
+
+        if (array_key_exists("QpsStandard",$param) and $param["QpsStandard"] !== null) {
+            $this->QpsStandard = $param["QpsStandard"];
+        }
+
+        if (array_key_exists("BandwidthStandard",$param) and $param["BandwidthStandard"] !== null) {
+            $this->BandwidthStandard = $param["BandwidthStandard"];
+        }
+
+        if (array_key_exists("Status",$param) and $param["Status"] !== null) {
+            $this->Status = $param["Status"];
+        }
+
+        if (array_key_exists("SandboxQps",$param) and $param["SandboxQps"] !== null) {
+            $this->SandboxQps = $param["SandboxQps"];
+        }
+
+        if (array_key_exists("IsAPISecurityTrial",$param) and $param["IsAPISecurityTrial"] !== null) {
+            $this->IsAPISecurityTrial = $param["IsAPISecurityTrial"];
         }
     }
 }
